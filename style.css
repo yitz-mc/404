@@ -11,14 +11,27 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(to bottom right, #EEE, #AAA);
+  background: var(--bg-gradient);
   overflow: hidden;
+  transition: background 0.3s;
+}
+
+/* Dark theme variables (default) */
+body.dark-theme {
+  --bg-gradient: linear-gradient(to bottom right, #0d1016, #1f2633);
+  --text-color: #eee;
+}
+
+/* Light theme variables */
+body.light-theme {
+  --bg-gradient: linear-gradient(to bottom right, #eee, #aaa);
+  --text-color: #333;
 }
 
 .error-container {
   text-align: center;
-  color: #333;;
-  font-family: 'Courier New', Courier, monospace;
+  color: var(--text-color);
+  font-family: "Courier New", Courier, monospace;
 }
 
 .error-number {
@@ -39,8 +52,8 @@ body {
 .outlined-button {
   display: inline-block;
   padding: 12px 24px;
-  border: 2px solid #333; /* Primary color for border */
-  color: #333; /* Same as border for consistency */
+  border: 2px solid var(--text-color);
+  color: var(--text-color);
   border-radius: 5px;
   text-decoration: none;
   font-weight: 500;
@@ -49,11 +62,5 @@ body {
 }
 
 .outlined-button:hover {
-  transform: scale(1.05); /* Slightly enlarge button */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
-}
-
-.outlined-button:focus {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.5); /* Focus ring for accessibility */
+  transform: scale(1.05);
 }

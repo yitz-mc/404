@@ -4,17 +4,21 @@
     <meta charset="UTF-8" />
     <title>Page Not Found</title>
     <link rel="stylesheet" href="./style.css" />
-  </head>
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const triggerLogout = document.getElementById("go-home");
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // Determine theme from URL (?theme=light or ?theme=dark), default to light
+        const params = new URLSearchParams(window.location.search);
+        const theme = params.get("theme") === "dark" ? "dark-theme" : "light-theme";
+        document.body.classList.add(theme);
 
-      triggerLogout.addEventListener("click", (event) => {
-        // Send a message to the parent window to trigger logout
-        window.parent.postMessage("go-home", "*");
+        const triggerLogout = document.getElementById("go-home");
+        triggerLogout.addEventListener("click", (event) => {
+          // Send a message to the parent window to trigger logout
+          window.parent.postMessage("go-home", "*");
+        });
       });
-    });
-  </script>
+    </script>
+  </head>
   <body>
     <div class="error-container">
       <div class="error-number">
